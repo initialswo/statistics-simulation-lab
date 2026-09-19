@@ -1,9 +1,27 @@
 # Statistics Simulation Lab
 
-A collection of Python simulations exploring probability, randomness, and introductory statistics.
+A collection of Python simulations designed to build intuition for probability, randomness, sampling, and statistical inference.
 
-Modules completed so far:
+Each module explores a statistical question through simulation and visualization.
 
-- Coin Flip Simulation
-- Dice Simulation
-- Sampling Distribution Simulation
+## Completed Modules
+
+* Coin Flip Simulation
+* Dice Simulation
+* Sampling Distribution Simulation
+* Central Limit Theorem Simulation
+
+## Project Goals
+
+This project is intended to strengthen my understanding of introductory statistics while developing practical Python programming skills.
+
+The simulations focus on connecting statistical theory with computational experiments by generating random data, analyzing results, and creating visualizations.
+
+## Planned Modules
+
+* Confidence Interval Simulation
+* Hypothesis Testing Simulation
+* Regression Basics
+* Monte Carlo Simulation
+* Law of large numbers
+* Variance and standard deviation
