@@ -1,0 +1,217 @@
+# Hypothesis Testing Simulation
+
+## Question
+
+If the null hypothesis is true, how often do we incorrectly reject it?
+
+This simulation explores the behavior of a two-sided one-sample z-test when the null hypothesis is known to be true.
+
+The main goal is to demonstrate the relationship between the significance level, p-values, and Type I errors.
+
+---
+
+## Hypotheses
+
+The simulation tests:
+
+- **Null hypothesis:** H0: μ = 50
+- **Alternative hypothesis:** HA: μ ≠ 50
+
+The simulated population also has a true mean of 50.
+
+Because the population mean and null-hypothesis mean are equal, the null hypothesis is true throughout the simulation.
+
+Therefore, whenever the test rejects H0, that rejection is a **Type I error**.
+
+---
+
+## Simulation Setup
+
+The simulation uses:
+
+- Population mean: 50
+- Null-hypothesis mean: 50
+- Population standard deviation: 10
+- Sample size: 30
+- Primary significance level: 0.05
+- Number of hypothesis tests: 10,000
+- Random seed: 42
+
+For each repetition, the program:
+
+1. Generates a random sample from the population.
+2. Calculates the sample mean.
+3. Calculates the standard error.
+4. Calculates the z-statistic.
+5. Calculates the two-sided p-value.
+6. Rejects H0 if the p-value is less than alpha.
+7. Records the test statistic, p-value, and decision.
+
+---
+
+## Test Statistic
+
+The standard error of the sample mean is:
+
+SE = σ / √n
+
+The z-statistic is:
+
+z = (x̄ - μ0) / SE
+
+where:
+
+- x̄ is the sample mean
+- μ0 is the mean specified by the null hypothesis
+- σ is the population standard deviation
+- n is the sample size
+
+The z-statistic measures how many standard errors the sample mean is from the null-hypothesis mean.
+
+---
+
+## P-Values
+
+For each z-statistic, the simulation calculates a two-sided p-value.
+
+The p-value represents the probability, assuming H0 is true, of obtaining a test statistic at least as extreme as the one observed.
+
+The decision rule is:
+
+- If p < α, reject H0.
+- If p ≥ α, fail to reject H0.
+
+---
+
+## Type I Error
+
+A Type I error occurs when the null hypothesis is true but the test rejects it.
+
+Because H0 is true in this simulation, every rejection is a Type I error.
+
+For a correctly calibrated hypothesis test, the long-run Type I error rate should be approximately equal to the chosen significance level:
+
+Type I error rate ≈ α
+
+---
+
+## Results
+
+Using 10,000 simulated hypothesis tests with a random seed of 42:
+
+- Rejections at α = 0.05: 487
+- Observed Type I error rate: 0.0487
+- Expected Type I error rate: 0.05
+
+The observed error rate is close to the theoretical 5% rate.
+
+The simulation also compares several significance levels:
+
+| Significance Level | Observed Type I Error Rate |
+|---|---:|
+| 0.01 | 0.0093 |
+| 0.05 | 0.0487 |
+| 0.10 | 0.1009 |
+
+These results show that the observed false-rejection rate closely follows the selected significance level.
+
+---
+
+## Validation
+
+The simulation performs several checks to confirm that the results behave as expected under the null hypothesis.
+
+### Z-Statistic Distribution
+
+The simulated z-statistics had approximately:
+
+- Mean: 0.0002
+- Standard deviation: 0.9941
+
+Under H0, the z-statistic should follow a standard normal distribution:
+
+Z ~ N(0, 1)
+
+The simulated results closely match this expectation.
+
+### P-Values
+
+All simulated p-values fall between 0 and 1.
+
+When H0 is true, p-values from a correctly calibrated continuous hypothesis test are uniformly distributed between 0 and 1.
+
+This means approximately:
+
+- 1% should fall below 0.01
+- 5% should fall below 0.05
+- 10% should fall below 0.10
+
+The simulation results closely follow these theoretical expectations.
+
+---
+
+## Figures
+
+### Distribution of Z-Statistics
+
+`figures/z_statistic_distribution.png`
+
+This figure shows the distribution of the 10,000 simulated z-statistics.
+
+The theoretical standard normal distribution is overlaid on the histogram. The critical z-values and rejection regions are also shown.
+
+Values that fall in the rejection regions represent Type I errors because the null hypothesis is true.
+
+### Distribution of P-Values
+
+`figures/p_value_distribution.png`
+
+This histogram shows the distribution of p-values when H0 is true.
+
+The distribution is approximately uniform, demonstrating that p-values are spread evenly between 0 and 1 under the null hypothesis.
+
+### Significance Level vs. Type I Error Rate
+
+`figures/alpha_vs_type_1_error_rate.png`
+
+This figure compares the observed Type I error rate with the theoretical relationship:
+
+Type I error rate = α
+
+The simulated results closely follow the expected line.
+
+---
+
+## Concepts Practiced
+
+This module demonstrates:
+
+- Null and alternative hypotheses
+- One-sample z-tests
+- Standard errors
+- Z-statistics
+- P-values
+- Significance levels
+- Rejection regions
+- Type I errors
+- Sampling variability
+- Standard normal distributions
+- Uniform p-value distributions under H0
+- Monte Carlo simulation
+- Statistical validation using repeated simulation
+
+---
+
+## What I Learned
+
+This simulation helped demonstrate that hypothesis testing does not eliminate the possibility of making an incorrect decision.
+
+Even when the null hypothesis is completely true, random sampling variability can occasionally produce an unusually extreme sample.
+
+If that sample produces a p-value below the chosen significance level, the test rejects the null hypothesis and creates a Type I error.
+
+The significance level controls the long-run probability of this type of error. For example, when α = 0.05, approximately 5% of tests reject a true null hypothesis.
+
+The simulation also showed why p-values are useful. Under a true null hypothesis, p-values are uniformly distributed, so the proportion of p-values below alpha is approximately equal to alpha itself.
+
+Overall, the experiment demonstrates the connection between sampling variability, z-statistics, p-values, significance levels, and false-positive decisions in hypothesis testing.

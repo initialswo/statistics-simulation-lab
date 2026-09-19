@@ -1,0 +1,57 @@
+# Confidence Interval Simulation
+
+## Question
+
+How often does a 95% confidence interval contain the true population mean?
+
+## Method
+
+This simulation creates a population of random integer values from 1 to 100. The program calculates the true mean of the population, then repeatedly takes random samples from that population.
+
+For each sample, the program:
+
+1. Calculates the sample mean.
+2. Calculates the sample standard deviation.
+3. Calculates the standard error.
+4. Builds an approximate 95% confidence interval.
+5. Checks whether the interval contains the true population mean.
+
+The confidence interval is calculated using:
+
+sample mean ± 1.96 × standard error
+
+where:
+
+standard error = sample standard deviation / square root of sample size
+
+The simulation repeats this process many times and calculates the percentage of intervals that contain the true population mean.
+
+## Result
+
+Most of the confidence intervals contain the true population mean. Since this module uses a 95% confidence interval method, the capture rate should usually be close to 95%, although it will not be exactly 95% every time because the simulation is random.
+
+The program also creates a plot of the simulated confidence intervals.
+
+In the plot:
+
+Green intervals = interval captured the true population mean
+Red intervals = interval missed the true population mean
+Black dashed vertical line = true population mean
+
+## What I Learned
+
+This simulation demonstrates the meaning of a confidence interval through repeated sampling.
+
+A 95% confidence interval does not mean that one specific interval has a 95% chance of containing the true population mean after the interval is created. Instead, it means that if we repeat the sampling process many times, about 95% of the intervals created by this method should contain the true population mean.
+
+This helped me understand confidence intervals as a long-run repeated sampling idea, not just as a formula.
+
+## Files
+
+confidence_interval_simulation.py
+README.md
+figures/confidence_interval_simulation_results.png
+
+## Possible Future Extension
+
+A future version of this module could compare different sample sizes to show how larger samples usually create narrower confidence intervals.
