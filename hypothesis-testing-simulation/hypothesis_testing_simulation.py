@@ -114,6 +114,17 @@ def make_p_plot(p_values):
 
     plt.show()
 
+def plot_alpha(p_below_alpha_rates):
+    alpha_levels = list(p_below_alpha_rates.keys())
+    error_rates = list(p_below_alpha_rates.values())
+
+    plt.plot(alpha_levels, error_rates, marker="o")
+    plt.xlabel("Significance level (alpha)")
+    plt.ylabel("Observed Type I error rate")
+    plt.title("Significance Level vs. Type I Error Rate")
+    plt.plot(alpha_levels, alpha_levels)
+    plt.show()
+
 def report(count, error_rate, alpha, mean_z_stat, sd_z_stat, 
            error_rate_validation, z_mean_validation, sd_z_validation,
            p_value_validation, p_below_alpha_rates,
@@ -172,6 +183,7 @@ def main():
 
     make_z_plot(z_stats, alpha)
     make_p_plot(p_values)
+    plot_alpha(p_below_alpha_rates)
 
     report(
         rejection_count, 
